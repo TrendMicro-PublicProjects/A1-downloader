@@ -14,20 +14,20 @@ Quando instalado dessa forma, após o endpoint comunicar com o V1, ele atualiza 
 
 ### Estrutura do Script
   1. #### Configurações
-
+  ```
   $URL = "https://xxxxx.manage.trendmicro.com/officescan/download/agent_cloud_x64_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.msi"
   $TempFolder = Join-Path $env:TEMP "Install_Trend"
   $LogFolder = "C:\ProgramData\Install_Trend"
   $LogPath = Join-Path $LogFolder "Install_Log.txt"
   $URL: link direto para o MSI da Trend Micro. 
+  ```
+- Essa $URL é encontrada em Standard Endpoint Protection > Directories > Product Servers
 
-Essa URL é encontrada em Standard Endpoint Protection > Directories > Product Servers
+- Para encontrar o ID do MSI respectivo ao tenant, basta fazer um download normal do agente via Endpoint Inventory com o Endpoint Group Manager correspondente. Em uma das pastas dentro de packages do pacote baixado do vision one, vai ter uma com MSI agent_cloud_x64_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx. É exatamente o mesmo ID que precisa informar no script.
 
-Para encontrar o ID do MSI respectivo ao tenant, basta fazer um download normal do agente via Endpoint Inventory com o Endpoint Group Manager correspondente. Em uma das pastas dentro de packages do pacote baixado do vision one, vai ter uma com MSI agent_cloud_x64_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx. É exatamente o mesmo ID que precisa informar no script.
+- $TempFolder: pasta temporária local para download do MSI.
 
-$TempFolder: pasta temporária local para download do MSI.
-
-$LogFolder e $LogPath: local para armazenar logs da instalação.
+- $LogFolder e $LogPath: local para armazenar logs da instalação.
 
 2. #### Função de verificação da instalação
 
